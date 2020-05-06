@@ -12,7 +12,6 @@ public class ShortUrlJSON {
 
     public String getShorUrl() { return  this.shortURL; }
 
-
     public void setShortURL(String shortURL) {this.shortURL = shortURL; }
 
 }

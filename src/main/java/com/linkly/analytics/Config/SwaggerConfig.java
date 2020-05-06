@@ -28,7 +28,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "Linkly URL Mapping REST API", //title
+                "Linkly Analytics API", //title
                 "An API to manage and access URL Analytics", //description
                 "Version 1.0", //version
                 "Terms of service", //terms of service URL

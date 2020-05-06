@@ -5,3 +5,5 @@ com/linkly/analytics/Repository/AnalyticsRepository.class
 com/linkly/analytics/Controller/AnalyticsController.class
 com/linkly/analytics/Config/SwaggerConfig.class
 com/linkly/analytics/AnalyticsApplication.class
+com/linkly/analytics/Config/SecurityConfig.class
+com/linkly/analytics/Config/SimpleCORSFilter.class

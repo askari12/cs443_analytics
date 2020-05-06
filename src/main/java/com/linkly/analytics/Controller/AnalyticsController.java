@@ -232,11 +232,52 @@ public class AnalyticsController {
 
     @CrossOrigin
     @GetMapping(path = "/all/{shortUrl}")
-    public ResponseEntity<Object> getAllClicks(@PathVariable String shortUrl) {
+    public ResponseEntity<Object> getAllClicksOfLinks(@PathVariable String shortUrl) {
         List<UrlClicks> list = repo.findByShortURL(shortUrl);
 
         return ResponseEntity.ok(list.size());
     }
 
+    @CrossOrigin
+    @GetMapping(path = "/all")
+    public ResponseEntity<Object> getAllClicks() {
+        List<UrlClicks> list = repo.findAll();
+        return ResponseEntity.ok(list.size());
+    }
+
+    @CrossOrigin
+    @GetMapping(path = "/info/{shortUrl}")
+    public ResponseEntity<Object> getAllClicksInfo(@PathVariable String shortUrl) {
+        return ResponseEntity.ok(repo.findByShortURL(shortUrl));
+    }
+    
+    @CrossOrigin
+    @PutMapping(path = "/update/{shortUrl}")
+    public ResponseEntity<Object> updateLinks(@RequestBody ShortUrlJSON newShortUrl, @PathVariable String shortUrl) {
+        List<UrlClicks> list = repo.findByShortURL(shortUrl);
+        for (int i = 0 ; i < list.size() ; i++) {
+            UrlClicks obj = list.get(i);
+
+
+
+            obj.setShortURL( newShortUrl.getShorUrl() );
+            repo.save(obj);
+        }
+
+        return ResponseEntity.ok().build();
+    }
+
+    @CrossOrigin
+    @DeleteMapping(path = "/delete/{shortUrl}")
+    public ResponseEntity<Object> deleteLinks(@PathVariable String shortUrl)
+    {
+        List<UrlClicks> list = repo.findByShortURL(shortUrl);
+        for (int i = 0 ; i < list.size() ; i++) {
+            UrlClicks obj = list.get(i);
+            repo.deleteById(obj.getId());
+        }
+
+        return ResponseEntity.ok().build();
+    }
 
 }
